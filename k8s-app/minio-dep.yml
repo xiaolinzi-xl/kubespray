@@ -2,6 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: minio-deployment
+  labels:
+    app: minio
 spec:
   selector:
     matchLabels:
