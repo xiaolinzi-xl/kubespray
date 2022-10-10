@@ -1,0 +1,2 @@
+1、gluster 新建默认分布式卷 
+gluster volume create trino node-01:/trino node-02:/trino force
