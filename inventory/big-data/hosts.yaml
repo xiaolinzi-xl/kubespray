@@ -4,19 +4,19 @@ all:
       ansible_host: 192.168.20.8
       ip: 192.168.20.8
       access_ip: 192.168.20.8
-    master-2:
+    worker-1:
       ansible_host: 192.168.20.7
       ip: 192.168.20.7
       access_ip: 192.168.20.7
-    master-3:
+    worker-2:
       ansible_host: 192.168.20.24
       ip: 192.168.20.24
       access_ip: 192.168.20.24
-    worker-1:
+    worker-3:
       ansible_host: 192.168.20.15
       ip: 192.168.20.15
       access_ip: 192.168.20.15
-    worker-2:
+    worker-4:
       ansible_host: 192.168.20.10
       ip: 192.168.20.10
       access_ip: 192.168.20.10
@@ -24,20 +24,17 @@ all:
     kube-master:
       hosts:
         master-1:
-        master-2:
-        master-3:
     kube-node:
       hosts:
-        master-1:
-        master-2:
-        master-3:
         worker-1:
         worker-2:
+        worker-3:
+        worker-4:
     etcd:
       hosts:
         master-1:
-        master-2:
-        master-3:
+        worker-1:
+        worker-2:
     k8s-cluster:
       children:
         kube-master:
