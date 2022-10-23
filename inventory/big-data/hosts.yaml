@@ -59,8 +59,8 @@ all:
         worker-2:
         worker-3:
         worker-4:
-        worker-5
-        worker-6
+        worker-5:
+        worker-6:
     etcd:
       hosts:
         master-1:
