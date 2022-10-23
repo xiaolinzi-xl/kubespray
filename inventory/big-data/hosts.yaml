@@ -35,6 +35,20 @@ all:
       node_labels:
         infra.deepexi/components: datafacts
         infra.deepexi/class: product
+    worker-5:
+      ansible_host: 192.168.20.6
+      ip: 192.168.20.6
+      access_ip: 192.168.20.6
+      node_labels:
+        infra.deepexi/components: datasense
+        infra.deepexi/class: base
+    worker-6:
+      ansible_host: 192.168.20.2
+      ip: 192.168.20.2
+      access_ip: 192.168.20.2
+      node_labels:
+        infra.deepexi/components: datasense
+        infra.deepexi/class: product
   children:
     kube-master:
       hosts:
@@ -45,6 +59,8 @@ all:
         worker-2:
         worker-3:
         worker-4:
+        worker-5
+        worker-6
     etcd:
       hosts:
         master-1:
