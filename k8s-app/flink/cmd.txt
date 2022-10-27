@@ -1,0 +1,19 @@
+1、部署 
+kubectl create -f https://github.com/jetstack/cert-manager/releases/download/v1.8.2/cert-manager.yaml
+
+2、helm
+helm repo add flink-operator-repo https://downloads.apache.org/flink/flink-kubernetes-operator-1.2.0/
+helm install flink-kubernetes-operator flink-operator-repo/flink-kubernetes-operator
+
+3、提交job
+kubectl create -f https://raw.githubusercontent.com/apache/flink-kubernetes-operator/release-1.2/examples/basic.yaml
+
+# 查看日志
+kubectl logs -f deploy/basic-example
+
+# 查看dashboard
+kubectl port-forward svc/basic-example-rest 8081
+
+# 删除job
+kubectl delete flinkdeployment/basic-example
+
