@@ -59,8 +59,8 @@ loadbalancer_apiserver_healthcheck_port: 8081
 # external_cloud_provider:
 
 ## Set these proxy values in order to update package manager and docker daemon to use proxies
-# http_proxy: ""
-# https_proxy: ""
+http_proxy: "http://192.168.0.108:8888"
+https_proxy: "http://192.168.0.108:8888"
 
 ## Refer to roles/kubespray-defaults/defaults/main.yml before modifying no_proxy
 # no_proxy: ""
