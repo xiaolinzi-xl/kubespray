@@ -1,71 +1,32 @@
 all:
   hosts:
     master-1:
-      ansible_host: 192.168.20.8
-      ip: 192.168.20.8
-      access_ip: 192.168.20.8
-      node_labels:
-        infra.deepexi/components: datafacts
-        infra.deepexi/class: integration
-    master-2:
-      ansible_host: 192.168.20.6
-      ip: 192.168.20.6
-      access_ip: 192.168.20.6
-      node_labels:
-        infra.deepexi/components: datasense
-        infra.deepexi/class: base
-    master-3:
-      ansible_host: 192.168.20.2
-      ip: 192.168.20.2
-      access_ip: 192.168.20.2
-      node_labels:
-        infra.deepexi/components: datasense
-        infra.deepexi/class: product
+      ansible_host: 10.20.20.30
+      ip: 10.20.20.30
+      access_ip: 10.20.20.30
     worker-1:
-      ansible_host: 192.168.20.7
-      ip: 192.168.20.7
-      access_ip: 192.168.20.7
-      node_labels:
-        infra.deepexi/components: dlink
-        infra.deepexi/class: product
+      ansible_host: 10.20.20.31
+      ip: 10.20.20.31
+      access_ip: 10.20.20.31
     worker-2:
-      ansible_host: 192.168.20.24
-      ip: 192.168.20.24
-      access_ip: 192.168.20.24
-      node_labels:
-        infra.deepexi/components: dlink
-        infra.deepexi/class: base
-    worker-3:
-      ansible_host: 192.168.20.15
-      ip: 192.168.20.15
-      access_ip: 192.168.20.15
-      node_labels:
-        infra.deepexi/components: datafacts
-        infra.deepexi/class: bigdata
-    worker-4:
-      ansible_host: 192.168.20.10
-      ip: 192.168.20.10
-      access_ip: 192.168.20.10
-      node_labels:
-        infra.deepexi/components: datafacts
-        infra.deepexi/class: product
+      ansible_host: 10.20.20.32
+      ip: 10.20.20.32
+      access_ip: 10.20.20.32
+    
   children:
     kube-master:
       hosts:
         master-1:
-        master-2:
-        master-3:
     kube-node:
       hosts:
+        master-1:
         worker-1:
         worker-2:
-        worker-3:
-        worker-4:
     etcd:
       hosts:
         master-1:
-        master-2:
-        master-3:
+        worker-1:
+        worker-2:
     k8s-cluster:
       children:
         kube-master:
