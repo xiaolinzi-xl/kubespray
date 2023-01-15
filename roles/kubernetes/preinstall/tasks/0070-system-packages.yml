@@ -70,23 +70,23 @@
     common_required_pkgs: "{{ common_required_pkgs|default([]) + ['ipvsadm', 'ipset'] }}"
   when: kube_proxy_mode == 'ipvs'
 
-- name: Install packages requirements
-  action:
-    module: "{{ ansible_pkg_mgr }}"
-    name: "{{ required_pkgs | default([]) | union(common_required_pkgs|default([])) }}"
-    state: latest
-  register: pkgs_task_result
-  until: pkgs_task_result is succeeded
-  retries: "{{ pkg_install_retries }}"
-  delay: "{{ retry_stagger | random + 3 }}"
-  when: not (ansible_os_family in ["Flatcar Container Linux by Kinvolk", "ClearLinux"] or is_fedora_coreos)
-  tags:
-    - bootstrap-os
+# - name: Install packages requirements
+#   action:
+#     module: "{{ ansible_pkg_mgr }}"
+#     name: "{{ required_pkgs | default([]) | union(common_required_pkgs|default([])) }}"
+#     state: latest
+#   register: pkgs_task_result
+#   until: pkgs_task_result is succeeded
+#   retries: "{{ pkg_install_retries }}"
+#   delay: "{{ retry_stagger | random + 3 }}"
+#   when: not (ansible_os_family in ["Flatcar Container Linux by Kinvolk", "ClearLinux"] or is_fedora_coreos)
+#   tags:
+#     - bootstrap-os
 
-- name: Install ipvsadm for ClearLinux
-  swupd:
-    name: ipvsadm
-    state: present
-  when:
-    - ansible_os_family in ["ClearLinux"]
-    - kube_proxy_mode == 'ipvs'
+# - name: Install ipvsadm for ClearLinux
+#   swupd:
+#     name: ipvsadm
+#     state: present
+#   when:
+#     - ansible_os_family in ["ClearLinux"]
+#     - kube_proxy_mode == 'ipvs'
